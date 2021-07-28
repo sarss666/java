@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <base href="<%=basePath%>">    
+    <title>用户登录</title>   
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">    
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
+
+  </head>
+
+  <body>
+    <script type="text/javascript">
+       function register(){
+            if(document.loginform.zhanghao.value==""){
+              window.alert("账号不能为空！");
+              return ;
+            }
+            if(document.loginform.mima.value==""){
+              window.alert("密码不能为空！");
+              return ;
+            }
+            if((document.loginform.mima.value)!=(document.loginform.confirmmima.value)){
+              window.alert("两次密码不一样！请确认密码！");
+              return ;
+            }
+            loginform.submit();
+       }
+    </script>
+    <form action="registerresult.jsp" name="loginform" method="post">
+        <h4 align="center"><b>用户登录</b></h4><br>         
+       <table align="center" border="1" width="300">
+         <tr>
+            <td>请输入账号：</td>
+            <td><input name="zhanghao" type="text"> </td>
+         </tr>
+         <tr>
+            <td>请输入密码：</td>
+            <td><input name="mima" type="password"> </td>
+         </tr>
+         <tr>
+            <td>请确认密码：</td>
+            <td><input name="confirmmima" type="password"> </td>
+         </tr>
+         <tr>
+            <td>请选择性别:</td>
+            <td><input name="sex" type="radio" value="男">男 <input name="sex" type="radio" value="女">女</td><!--单选按钮-->
+         </tr>
+        <tr>
+            <td>请选择家乡：</td>
+            <td>
+              <select name="home" ><!--下拉列表-->
+                <option value="北    京">北     京</option>
+                <option value="上   海">上   海</option>
+                <option value="广   州">广   州</option>
+                <option value="西   安">西   安</option>             
+              </select>
+             </td>
+         </tr>
+        <tr>
+            <td>请选择爱好：</td>
+            <td>
+            <input name="fav" type="checkbox" value="唱歌">唱歌
+            <input name="fav" type="checkbox" value="跳舞">跳舞
+            <input name="fav" type="checkbox" value="打球">打球   <!--复选框-->          
+            </td>
+         </tr>
+          <tr>
+            <td colspan="2">请输入个人信息：</td>  <!--表单元素跨越两列-->      
+         </tr>
+         <tr>
+            <td colspan="2" ><textarea name="info" rows="5" cols="30"></textarea></td> <!--多行文本框-->       
+         </tr>
+         <tr>
+            <td></td>
+            <td><input type="button" value="登录" onclick="register()"> <input type="button" value="忘记密码？"></td>
+         </tr>
+       </table>         
+     </form>
+  </body>
+</html>

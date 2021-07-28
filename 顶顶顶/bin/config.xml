@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!--<className>CreationalPattern.BuilderPattern.ConcreteBuilder.AngelBuilder</className>-->
+    <className>CreationalPattern.BuilderPattern.ConcreteBuilder.HeroBuilder</className>
+    <!--<className>CreationalPattern.BuilderPattern.ConcreteBuilder.DevilBuilder</className>-->
+</config>
