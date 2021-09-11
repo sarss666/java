@@ -19,6 +19,32 @@ public class Sort {
             array[j + 1] = key;
 
         }
+
+    }
+    public static void insertSortGsp(long[] array,int gap){
+        for (int i = gap; i < array.length; i++) {
+            long key = array[i];
+            int j;
+            for (j = i - gap; j >= 0 ; j = j - gap) {
+                if (key < array[j]){
+                    array[j + gap] = array[j];
+                }else {
+                    break;
+                }
+            }
+            array[j + gap] = key;
+        }
+    }
+    public static void shellSort(long[] array){
+        int gap = array.length / 2;
+        while (true){
+            insertSortGsp(array,gap);
+            if (gap == 1){
+                break;
+            }
+            gap = gap / 2;
+        }
+
     }
     public static long[] 构建随机数组(){
 
@@ -112,7 +138,7 @@ public class Sort {
     public static void main(String[] args) {
         long[] a1 = 构建随机数组();
         System.out.println(Arrays.toString(a1));
-        heapSort(a1);
+        shellSort(a1);
         System.out.println(Arrays.toString(a1));
 
 //        a1 = 构建逆序数组();
