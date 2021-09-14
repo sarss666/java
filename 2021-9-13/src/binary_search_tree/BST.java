@@ -49,4 +49,62 @@ public class BST {
             parent.right = node;
         }
     }
+    public boolean remove(Integer key){
+        Node parent = null;
+        Node current = root;
+        while (current != null) {
+            int cmp = key.compareTo(current.key);
+            if (cmp == 0){
+                removeInternal(current,parent);
+                return true;
+            }else if (cmp < 0){
+                parent = current;
+                current = current.left;
+            }else {
+                parent = current;
+                current = current.right;
+            }
+        }
+        return false;
+    }
+    private void removeInternal(Node node,Node parent){
+        if (node.left == null && node.right == null){
+            if (node == root){
+                root = null;
+            }else if(node == parent.left){
+                parent.left = null;
+            }else {
+                parent.right = null;
+            }
+        }else if (node.left != null && node.right == null){
+            if (node == root){
+                root = node.left;
+            }else if (node == parent.left){
+                parent.left = node.left;
+            }else {
+                parent.right = node.left;
+            }
+        }else if (node.left == null && node.right != null){
+            if (node == root){
+                root = node.right;
+            }else if (node == parent.left){
+                parent.left = node.right;
+            }else {
+                parent.right = node.right;
+            }
+        }else {
+            Node ghostParent = node;
+            Node ghost = node.left;
+            while (ghost.right != null){
+                ghostParent = ghost;
+                ghost = ghostParent.right;
+            }
+            node.key = ghost.key;
+            if (node == ghostParent){
+                ghostParent.left = ghost.left;
+            }else {
+                ghostParent.right = ghost.right;
+            }
+        }
+    }
 }
